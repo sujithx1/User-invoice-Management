@@ -17,7 +17,7 @@ export class InvoiceEntity{
 
 export interface Invoice {
   id?: string
-  invoiceNumber: string
+  invoiceNumber: number
   invoiceDate: Date
   invoiceAmount: number
   customerName?: string
@@ -26,4 +26,6 @@ export interface Invoice {
   dueDate?: Date
   financialYear: string
   createdBy: string
+  createdAt?:Date
+  updatedAt?:Date
 }

@@ -10,7 +10,7 @@ export const Authentication=(req:Request,res:Response,next:NextFunction):void=>{
     
     if(!token)
     {
-     res.status(StatusCode.UNAUTHORIZED).json({message:'Token required'})
+     res.status(StatusCode.UNAUTHORIZED).json({message:'Token Expired'})
      return
     }
 
@@ -24,6 +24,6 @@ export const Authentication=(req:Request,res:Response,next:NextFunction):void=>{
     next()
     
    })
-
+    
 
 }

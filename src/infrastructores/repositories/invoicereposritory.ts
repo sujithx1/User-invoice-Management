@@ -61,4 +61,11 @@ export const mongoInvoiceRepository: InvoiceRepository = {
       return invoices.map((item)=>ReturnInvoice(item))
   },
 
+
+  async findByAll() {
+      const invoice =await invoicemodel.find()
+      if(invoice.length==0)return null
+      return invoice.map((item)=>ReturnInvoice(item))
+  },
+
 }

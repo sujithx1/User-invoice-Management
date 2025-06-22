@@ -5,7 +5,8 @@ export interface InvoiceRepository {
   findById(id: string): Promise<Invoice | null>
   update(invoice: Invoice): Promise<Invoice|null>
   delete(id: string): Promise<void>
-  findByNumberAndFY(invoiceNumber: string, financialYear: string): Promise<Invoice | null>
+  findByNumberAndFY(invoiceNumber: number, financialYear: string): Promise<Invoice | null>
   findByFYAndUser(financialYear: string, userId: string): Promise<Invoice[]>
   findByUserId(userId:string):Promise<Invoice[]|null>
+  findByAll():Promise<Invoice[]|null>
 }
