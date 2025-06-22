@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.invoiceController = void 0;
+const invoicereposritory_1 = require("../infrastructores/repositories/invoicereposritory");
+const invoiceController_1 = require("../presentations/controllers/invoiceController");
+const create_1 = require("../useCases/invoice/create");
+const getinvoicesbyusers_1 = require("../useCases/invoice/getinvoicesbyusers");
+const invoiceRepo = invoicereposritory_1.mongoInvoiceRepository;
+const createInvoiceusecase = new create_1.InvoiceCreateuseCase(invoiceRepo);
+const getinvoicesByuserId = new getinvoicesbyusers_1.InvoiceGetbyuserIduseCase(invoiceRepo);
+exports.invoiceController = new invoiceController_1.InvoiceController(createInvoiceusecase, getinvoicesByuserId);
