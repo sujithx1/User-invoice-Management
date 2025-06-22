@@ -11,7 +11,7 @@ const Authentication = (req, res, next) => {
     const authHeader = req.headers['authorization'];
     const token = authHeader && authHeader.split(' ')[1];
     if (!token) {
-        res.status(types_1.StatusCode.UNAUTHORIZED).json({ message: 'Token required' });
+        res.status(types_1.StatusCode.UNAUTHORIZED).json({ message: 'Token Expired' });
         return;
     }
     jsonwebtoken_1.default.verify(token, accessSecret, (err, user) => {

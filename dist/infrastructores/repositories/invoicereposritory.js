@@ -79,4 +79,12 @@ exports.mongoInvoiceRepository = {
             return invoices.map((item) => (0, exports.ReturnInvoice)(item));
         });
     },
+    findByAll() {
+        return __awaiter(this, void 0, void 0, function* () {
+            const invoice = yield invoicemodel_1.invoicemodel.find();
+            if (invoice.length == 0)
+                return null;
+            return invoice.map((item) => (0, exports.ReturnInvoice)(item));
+        });
+    },
 };

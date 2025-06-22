@@ -37,7 +37,7 @@ exports.invoicemodel = void 0;
 const mongoose_1 = __importStar(require("mongoose"));
 const InvoiceSchema = new mongoose_1.Schema({
     invoiceNumber: {
-        type: String,
+        type: Number,
         required: true,
     },
     invoiceDate: {

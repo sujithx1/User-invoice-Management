@@ -9,7 +9,7 @@ const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const accessSecret = process.env.JWT_ACCESS_SECRET;
 const refreshSecrect = process.env.JWT_REFRESH_SECRET;
 const generateAcceToken = (payload) => {
-    return jsonwebtoken_1.default.sign(payload, accessSecret, { expiresIn: "15m" });
+    return jsonwebtoken_1.default.sign(payload, accessSecret, { expiresIn: "2h" });
 };
 exports.generateAcceToken = generateAcceToken;
 const generateRefreshToken = (payload) => {
@@ -17,7 +17,7 @@ const generateRefreshToken = (payload) => {
 };
 exports.generateRefreshToken = generateRefreshToken;
 const generatenewAccessToken = (req, res) => {
-    const role = req.headers["role"];
+    const { role } = req.params;
     const userRole = `${role}_refreshToken`;
     const refreshToken = req.cookies[userRole];
     if (!refreshToken) {
@@ -32,6 +32,7 @@ const generatenewAccessToken = (req, res) => {
                 .json({ message: "Invalid Refresh Token" });
         }
         const user = decode;
+        console.log(user);
         const newAccessToken = (0, exports.generateAcceToken)(user);
         return res.json({ accessToken: newAccessToken });
     });
