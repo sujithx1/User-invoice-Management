@@ -2,16 +2,28 @@
 
 export class InvoiceEntity{
     constructor(
-
- public invoiceNumber: number,
+ public invoiceNumber: string,
  public invoiceDate: Date,
- public amount: number,
- public createdBy: string,
- public financialYear: string,
- public createdAt?:Date,
- public updatedAt?:Date,
-
+  public invoiceAmount: number,
+  public customerName?: string,
+  public customerEmail?: string,
+  public description?: string,
+  public dueDate?: Date
     ) {
         
     }
+}
+
+
+export interface Invoice {
+  id?: string
+  invoiceNumber: string
+  invoiceDate: Date
+  invoiceAmount: number
+  customerName?: string
+  customerEmail?: string
+  description?: string
+  dueDate?: Date
+  financialYear: string
+  createdBy: string
 }
